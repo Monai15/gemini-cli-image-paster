@@ -39,9 +39,25 @@ A_Clipboard := oldClip
 *   **What it does:** It temporarily swaps your clipboard content. It puts the `@path` into the clipboard, hits Paste, and then **restores** your original image.
 *   **Why:** We discovered that "typing" the path was slow and sometimes missed the `@` symbol. "Pasting" the path is 100% reliable.
 
+### Part D: The Janitor (Cleanup Routine)
+```autohotkey
+Loop Files, A_Temp "\gemini_clip_*.png" {
+    if DateDiff(A_Now, A_LoopFileTimeCreated, "Hours") > 24 {
+        try FileDelete(A_LoopFileFullPath)
+    }
+}
+```
+*   **What it does:** Scans the Windows Temp folder for older screenshot files created by the script.
+*   **Why:** Without this, every image you paste would stay on your hard drive forever. This "auto-cleanup" ensures the tool is zero-maintenance and doesn't waste disk space.
+
 ---
 
 ## 3. Problems Faced & Lessons Learned
+...
+### Problem 4: Disk Space Accumulation
+*   **Symptom:** Fear of the Temp folder growing too large over time.
+*   **Reason:** Every clipboard "paste" creates a new physical file on the drive.
+*   **Fix:** Integrated a 24-hour cleanup cycle that runs every time the hotkey is pressed.
 
 ### Problem 1: The "Ghost" Paste (Terminal Lag)
 *   **Symptom:** The script said "Success" but nothing appeared in the terminal.

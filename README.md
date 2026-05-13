@@ -15,6 +15,7 @@ This AutoHotkey script automates the entire process. When you press `Ctrl+Shift+
 - **Context Aware:** Only triggers in terminal windows (Windows Terminal, PowerShell, CMD, VS Code).
 - **Silent Execution:** No flashing windows or popups.
 - **Robust:** Handles both screenshot data and copied image files.
+- **Auto-Cleanup:** Automatically deletes temporary image files older than 24 hours to save disk space.
 
 ## 📦 Installation
 1. Install [AutoHotkey v2](https://www.autohotkey.com/).
