@@ -1,0 +1,13 @@
+# AHK Backup and Plan files
+gemini_paste_backup.ahk
+ahk_paste_plan.md
+
+# Windows Temp files (just in case)
+gemini_clip_*.png
+gemini_result.txt
+gemini_check.ps1
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
