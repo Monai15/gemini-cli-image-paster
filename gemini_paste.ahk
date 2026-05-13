@@ -11,6 +11,14 @@ GroupAdd("Terminals", "ahk_exe Code.exe") ; For VS Code integrated terminal
 #HotIf WinActive("ahk_group Terminals")
 
 ^+v:: {
+    ; --- Cleanup Routine ---
+    ; Delete any gemini_clip files older than 24 hours to save space
+    Loop Files, A_Temp "\gemini_clip_*.png" {
+        if DateDiff(A_Now, A_LoopFileTimeCreated, "Hours") > 24 {
+            try FileDelete(A_LoopFileFullPath)
+        }
+    }
+
     ; Wait for you to release the keys so they don't interfere
     KeyWait("v")
     KeyWait("Shift")
